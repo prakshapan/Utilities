@@ -48,7 +48,9 @@ struct HomeTab: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .onAppear {
                                 DispatchQueue.main.async {
-                                    self.curvePosition = reader.frame(in: .global).midX
+                                    withAnimation(.spring()) {
+                                        self.curvePosition = reader.frame(in: .global).midX
+                                    }
                                 }
                             }
                             .onTapGesture() {
@@ -79,7 +81,7 @@ struct HomeTab: View {
                         .opacity(self.selectedTab == tab ? 1 : 0)
                         .offset(y: self.selectedTab == tab ? -25 : 0)
                         .foregroundColor(.red)
-                        .shadow(color: Color(#colorLiteral(red: 1, green: 0.2333956361, blue: 0.1861040294, alpha: 0.6425506162)), radius: 5, x: 0, y: 0)
+                        .shadow(color: Color(#colorLiteral(red: 1, green: 0.2377915978, blue: 0.1872775853, alpha: 0.5)), radius: 5, x: 0, y: 0)
                 )
         )
     }
@@ -119,3 +121,4 @@ struct CurveShape: Shape {
         }
     }
 }
+
